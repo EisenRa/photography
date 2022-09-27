@@ -1,12 +1,14 @@
 {
   "input": "./gallery",
   "output": "./build_output",
-  "title": "Photo Gallery",
+  "photo-quality": 100,
+  "large-size": 2000,
+  "title": "Raph's photos",
   "sort-albums-by": "title",
   "sort-media-by": "filename",
   "download-photos": "copy",
   "cleanup": true,
-  "theme": "cards",
+  "theme": "flow",
   "css": "./custom.css",
   "footer": "Copyright Text",
   "usage-stats": false
