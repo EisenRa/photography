@@ -4,16 +4,17 @@
   <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, user-scalable=no" />
-      <title>Photo Gallery - Test2</title>
+      <title>Raph&#x27;s photos - Test2</title>
       <link rel="stylesheet" href="public/lightgallery/css/lightgallery.css" />
+      <link rel="stylesheet" href="public/lightslider/css/lightslider.min.css" />
       <link rel="stylesheet" href="public/videojs/video-js.min.css" />
       <link rel="stylesheet" href="public/lightgallery/css/lg-exif.min.css" />
       <link rel="stylesheet" href="public/core.css" />
       <link rel="stylesheet" href="public/theme.css" />
+      <link rel="stylesheet" href="public/justifiedgallery/justifiedGallery.min.css" />
   </head>
 
   <body>
-
     
     <div id="container">
     
@@ -21,7 +22,7 @@
         Gallery title
       -->
       <header>
-        <h1><a href="index.html">Photo Gallery</a></h1>
+        <h1><a href="index.html">Raph&#x27;s photos</a></h1>
       </header>
     
       <!--
@@ -31,45 +32,36 @@
     <a class="breadcrumb-item" href="index.html">Home</a>&nbsp;/&nbsp;<a class="breadcrumb-item" href="Test2.html">Test2</a>
       </nav>
     
+    
       <!--
         Nested albums, if any
       -->
-      <div id="albums">
+      <div id="albums" class="justified-gallery">
       </div>
     
       <!--
         All photos and videos
       -->
-      <ul id="media" class="clearfix">
+      <ul id="media" class="clearfix justified-gallery">
           
-            <li data-src="media/large/Test2/untitled-15.jpg"
-                data-sub-html=""
-                data-download-url="media/original/Test2/untitled-15.jpg"
-                
-                data-filename="untitled-15.jpg"
-          
-              >
-              <a href="media/original/Test2/untitled-15.jpg">
-                <img src="media/thumbs/Test2/untitled-15.jpg"
-                     width="120"
-                     height="120"
-                     alt="untitled-15.jpg" />
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/original/Test2/untitled-15.jpg"data-src="media/large/Test2/untitled-15.jpg"data-exthumbimage="media/thumbs/Test2/untitled-15.jpg"data-filename="untitled-15.jpg"><a href="media/large/Test2/untitled-15.jpg"><img
+                      src="media/small/Test2/untitled-15.jpg"
+                      width="450"
+                      height="300"alt="untitled-15.jpg"/>
               </a>
-            </li>      
-            <li data-src="media/large/Test2/untitled-16.jpg"
-                data-sub-html=""
-                data-download-url="media/original/Test2/untitled-16.jpg"
-                
-                data-filename="untitled-16.jpg"
           
-              >
-              <a href="media/original/Test2/untitled-16.jpg">
-                <img src="media/thumbs/Test2/untitled-16.jpg"
-                     width="120"
-                     height="120"
-                     alt="untitled-16.jpg" />
+          </div>      
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/original/Test2/untitled-16.jpg"data-src="media/large/Test2/untitled-16.jpg"data-exthumbimage="media/thumbs/Test2/untitled-16.jpg"data-filename="untitled-16.jpg"><a href="media/large/Test2/untitled-16.jpg"><img
+                      src="media/small/Test2/untitled-16.jpg"
+                      width="450"
+                      height="300"alt="untitled-16.jpg"/>
               </a>
-            </li>  </ul>
+          
+          </div>  </ul>
     
       <!--
         Pagination
@@ -78,7 +70,6 @@
       <!--
         Zip file link
       -->
-    
     
       <!--
         Optional footer
@@ -98,11 +89,13 @@
     <script src="public/videojs/video.min.js"></script>
     <!-- LightGallery -->
     <script src="public/lightgallery/js/lightgallery.js"></script>
+    <script src="public/lightslider/js/lightslider.min.js"></script>
     <script src="public/lightgallery/js/lg-autoplay.js"></script>
     <script src="public/lightgallery/js/lg-pager.js"></script>
     <script src="public/lightgallery/js/lg-thumbnail.js"></script>
     <script src="public/lightgallery/js/lg-video.js"></script>
     <script src="public/lightgallery/js/lg-exif.min.js"></script>
+    <script src="public/justifiedgallery/jquery.justifiedGallery.min.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -112,10 +105,28 @@
           loop : false,
           download: true,
           counter: true,
-          videojs: true
+          videojs: true,
+          exThumbImage: 'data-exthumbimage',
+        });
+
+        // Init justified gallery for albums
+        $("#albums").justifiedGallery({
+          margins: 10,
+          rowHeight: 300,
+          maxRowHeight: 325,
+        });
+
+        // Init justified gallery for photos
+        $("#media").justifiedGallery({
+          selector: '.albumList',
+          waitThumbnailsLoad: false,
+          margins: 10,
+          rowHeight: 250,
+          maxRowHeight: 275,
         });
       });
     </script>
+
 
 
   </body>
